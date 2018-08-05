@@ -24,7 +24,6 @@ export class AddingEmployeeComponent implements OnInit {
 
   createEmployee(): void {
     this.employee.hireDate = this.convertDateToStringValue(this.datePicker.date);
-    console.log("Einai o ergazomenos: ", this.employee);
     this.employeeService.createEmployee(this.employee)
       .subscribe((data: any) => console.log(data),
         error => console.log('Error', error),
