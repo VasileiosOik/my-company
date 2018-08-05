@@ -1,0 +1,66 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Employee</h2>
+  <form name="form" (ngSubmit)="f.form.valid && createEmployee()" #f="ngForm" novalidate>
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input [(ngModel)]="employee.name" placeholder="First Name" name="firstName" class="form-control" id="firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid}" required>
+      <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+        <div *ngIf="firstName?.errors.required">First Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input [(ngModel)]="employee.lName" placeholder="Last name" name="lastName" class="form-control" id="lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required>
+      <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+        <div *ngIf="lastName?.errors.required">Last Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="jobTitle">Job Title:</label>
+      <input [(ngModel)]="employee.jobTitle" placeholder="Job Title" name="jobTitle" class="form-control" id="jobTitle" #jobTitle="ngModel" [ngClass]="{ 'is-invalid': f.submitted && jobTitle.invalid }" required>
+      <div *ngIf="f.submitted && jobTitle.invalid" class="invalid-feedback">
+        <div *ngIf="jobTitle?.errors.required">Last Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="hireDate">Hire Date:</label>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" name="hireDate" id="hireDate" placeholder="yyyy-mm-dd"
+                   [(ngModel)]="datePicker.date" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <img src="/assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-group">
+      <label for="managerId">Manager Id:</label>
+      <input [(ngModel)]="employee.managerId" placeholder="Manager Id" name="managerId" class="form-control"
+             id="managerId"  #managerId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && managerId.invalid }" required>
+      <div *ngIf="f.submitted && managerId.invalid" class="invalid-feedback">
+        <div *ngIf="managerId.errors['required']">Last Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="departmentId">Department Id:</label>
+      <input [(ngModel)]="employee.departmentId" placeholder="Department Id" name="departmentId" class="form-control"
+             id="departmentId" #departmentId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && managerId.invalid }" required>
+      <div *ngIf="f.submitted && departmentId.invalid" class="invalid-feedback">
+        <div *ngIf="departmentId.errors['required']">Last Name is required</div>
+      </div>
+    </div>
+
+    <button class="btn btn-success">Create</button>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {AddingEmployeeComponent} from './employee/adding-employee/adding-employee.component';
+import {ListingEmployeeComponent} from './employee/listing-employee/listing-employee.component';
+import {ListingDepartmentComponent} from './department/listing-department/listing-department.component';
+import {AddingDepartmentComponent} from './department/adding-department/adding-department.component';
+
+
+const routes: Routes = [
+  { path: 'employees', component: ListingEmployeeComponent },
+  { path: 'employee', component:  AddingEmployeeComponent},
+  { path: 'departments', component: ListingDepartmentComponent},
+  { path: 'department', component:  AddingDepartmentComponent},
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+  declarations: []
+})
+export class AppRoutingModule { }
