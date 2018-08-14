@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from './employee.service';
 import {Datepicker} from "../model/datepicker";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-employee',
@@ -11,23 +12,33 @@ import {Datepicker} from "../model/datepicker";
 })
 export class AddingEmployeeComponent implements OnInit {
 
+  @ViewChild("f") public createEmployeeForm: NgForm;
   employee: Employee = new Employee();
   datePicker: Datepicker = new Datepicker();
 
-  constructor(private router: Router, private employeeService: EmployeeService) {
+  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) {
   }
 
 
   ngOnInit() {
+    this.route.paramMap.subscribe(paramMap => {
+      const id = +paramMap.get('id');
+      console.log("Einai to id:", id);
+      this.getEmployee(id);
+    });
     this.defaultDate();
   }
 
-  createEmployee(): void {
+  saveEmployee(): void {
+    console.log("authos pou stelnw: ", this.employee);
     this.employee.hireDate = this.convertDateToStringValue(this.datePicker.date);
-    this.employeeService.createEmployee(this.employee)
-      .subscribe((data: any) => console.log(data),
+    this.employeeService.saveEmployee(this.employee)
+      .subscribe(data => console.log(data),
         error => console.log('Error', error),
-        () => console.log("Created successfully")
+        () => {
+          console.log("Created successfully");
+          this.createEmployeeForm.resetForm();
+        }
       );
   }
 
@@ -46,5 +57,35 @@ export class AddingEmployeeComponent implements OnInit {
     let dateObj: Date;
     dateObj = new Date(date.year, date.month - 1, date.day);
     return dateObj.toISOString().substring(0, dateObj.toISOString().indexOf('T'));
+  }
+
+  private getEmployee(id: number) {
+    if (id === 0) {
+      this.employee.id = null;
+      this.employee.name = null;
+      this.employee.lName = null;
+      this.employee.jobTitle = null;
+      this.employee.hireDate = null;
+      this.employee.managerId = null;
+      this.employee.departmentId = null;
+    } else {
+      this.employeeService.getEmployee(id)
+        .subscribe(data => {
+          this.employee = data;
+          let hire = this.employee.hireDate;
+          this.displayEmployeeHireDate(hire);
+        });
+
+    }
+  }
+
+  private displayEmployeeHireDate(hireDate: string) {
+    let date: Date;
+    date = new Date(hireDate);
+    this.datePicker.date = {
+      'year': date.getFullYear(),
+      'month': date.getMonth() + 1,
+      'day': date.getDate()
+    };
   }
 }

@@ -8,10 +8,10 @@ import {AddingDepartmentComponent} from './department/adding-department/adding-d
 
 const routes: Routes = [
   { path: 'employees', component: ListingEmployeeComponent },
-  { path: 'employee', component:  AddingEmployeeComponent},
+  { path: 'employee/:id', component:  AddingEmployeeComponent},
   { path: 'departments', component: ListingDepartmentComponent},
-  { path: 'department', component:  AddingDepartmentComponent},
-];
+  { path: 'department', component:  AddingDepartmentComponent}
+  ];
 
 @NgModule({
   imports: [

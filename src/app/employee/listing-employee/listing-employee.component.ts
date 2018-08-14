@@ -34,4 +34,7 @@ export class ListingEmployeeComponent implements OnInit {
       () => console.log("Deleted successfully"));
   }
 
+  editEmployee(employee: Employee) {
+    this.router.navigate(['/employee', employee.id]);
+  }
 }

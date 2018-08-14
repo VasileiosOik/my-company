@@ -1,13 +1,16 @@
 <div class="col-md-6">
   <h2 class="text-center">Add Department</h2>
-  <form>
+  <form name="form" (ngSubmit)="f.form.valid && createDepartment()" #f="ngForm" novalidate>
 
     <div class="form-group">
       <label for="Name">Name:</label>
-      <input [(ngModel)]="department.depName" placeholder="Name" name="Name" class="form-control" id="Name">
+      <input [(ngModel)]="department.depName" placeholder="Name" name="Name" class="form-control" id="Name" #Name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Name.invalid}" required>
+      <div *ngIf="f.submitted && Name.invalid" class="invalid-feedback">
+        <div *ngIf="Name?.errors.required">Name is required</div>
+      </div>
     </div>
 
-    <button class="btn btn-success" (click)="createDepartment()">Create</button>
+    <button type="submit" class="btn btn-success">Create</button>
   </form>
 </div>
 

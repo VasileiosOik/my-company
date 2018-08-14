@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Department} from '../model/department';
 import {DepartmentService} from './department.service';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-department',
@@ -9,6 +10,7 @@ import {DepartmentService} from './department.service';
   styleUrls: ['./adding-department.component.css']
 })
 export class AddingDepartmentComponent implements OnInit {
+  @ViewChild("f") public createDepartmentForm: NgForm;
 
   department: Department = new Department();
 
@@ -23,10 +25,14 @@ export class AddingDepartmentComponent implements OnInit {
   createDepartment(): void {
     console.log(this.department);
     this.departmentService.createDepartment(this.department)
-      .subscribe( data => {
-        alert('Department created successfully.');
-      });
+      .subscribe( data =>
+        console.log(data),
+        error => console.log("Error", error),
+      () => {
+        console.log("Created successfully");
+        this.createDepartmentForm.resetForm();
+      }
 
-  }
+  )}
 
 }

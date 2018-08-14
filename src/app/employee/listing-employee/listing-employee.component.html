@@ -22,7 +22,8 @@
       <td>{{employee.hireDate}}</td>
       <td>{{employee.managerId}}</td>
       <td>{{employee.departmentId}}</td>
-      <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete User</button></td>
+      <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td>
+      <td><button class="btn btn-primary" (click) ="editEmployee(employee)">Edit Employee</button></td>
     </tr>
     </tbody>
   </table>

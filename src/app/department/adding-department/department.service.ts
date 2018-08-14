@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
+import {UrlEnum} from "../../shared/url.enum";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +15,7 @@ export class DepartmentService {
   constructor(private http: HttpClient) { }
 
 
-  private departmentUrl = 'http://localhost:8081/JavaApplication/company';
+  private departmentUrl = UrlEnum.url;
 
   public getDepartments(): Observable<any>{
     return this.http.get(`${this.departmentUrl}` + `/departments`, httpOptions);

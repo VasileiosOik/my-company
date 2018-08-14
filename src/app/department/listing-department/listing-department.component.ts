@@ -25,10 +25,9 @@ export class ListingDepartmentComponent implements OnInit {
   }
 
   deleteDepartment(department: Department): void {
-
     this.departmentService.deleteDepartment(department)
       .subscribe( data => {
-        this.departments = this.departments.filter(e => e !== department);
+        this.departments = this.departments.filter(dep => dep !== department);
       });
   }
 
