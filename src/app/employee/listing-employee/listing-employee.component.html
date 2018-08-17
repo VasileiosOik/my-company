@@ -1,6 +1,6 @@
-<div class="col-md-6">
+<div id="employeesList" *ngIf="employees" class="table-responsive">
+<div class="col-lg-12">
   <h2>Employee Details</h2>
-
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -28,3 +28,7 @@
     </tbody>
   </table>
 </div>
+</div>
+<app-error-message *ngIf="errorMessage" [errorModel]="errorModel" [message]="errorMessage"></app-error-message>
+
+

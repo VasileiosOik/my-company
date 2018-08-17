@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from './employee.service';
-import {Datepicker} from "../model/datepicker";
-import {NgForm} from "@angular/forms";
+import {Datepicker} from '../model/datepicker';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -12,7 +12,7 @@ import {NgForm} from "@angular/forms";
 })
 export class AddingEmployeeComponent implements OnInit {
 
-  @ViewChild("f") public createEmployeeForm: NgForm;
+  @ViewChild('f') public createEmployeeForm: NgForm;
   employee: Employee = new Employee();
   datePicker: Datepicker = new Datepicker();
 
@@ -23,20 +23,20 @@ export class AddingEmployeeComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap => {
       const id = +paramMap.get('id');
-      console.log("Einai to id:", id);
+      console.log('The chosen id is', id);
       this.getEmployee(id);
     });
     this.defaultDate();
   }
 
   saveEmployee(): void {
-    console.log("authos pou stelnw: ", this.employee);
+    console.log('The employee to save is: ', this.employee);
     this.employee.hireDate = this.convertDateToStringValue(this.datePicker.date);
     this.employeeService.saveEmployee(this.employee)
       .subscribe(data => console.log(data),
         error => console.log('Error', error),
         () => {
-          console.log("Created successfully");
+          console.log('Created successfully');
           this.createEmployeeForm.resetForm();
         }
       );
@@ -72,7 +72,7 @@ export class AddingEmployeeComponent implements OnInit {
       this.employeeService.getEmployee(id)
         .subscribe(data => {
           this.employee = data;
-          let hire = this.employee.hireDate;
+          const hire = this.employee.hireDate;
           this.displayEmployeeHireDate(hire);
         });
 

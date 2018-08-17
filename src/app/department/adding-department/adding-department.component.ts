@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Department} from '../model/department';
 import {DepartmentService} from './department.service';
-import {NgForm} from "@angular/forms";
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-department',
@@ -10,7 +10,7 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./adding-department.component.css']
 })
 export class AddingDepartmentComponent implements OnInit {
-  @ViewChild("f") public createDepartmentForm: NgForm;
+  @ViewChild('f') public createDepartmentForm: NgForm;
 
   department: Department = new Department();
 
@@ -25,14 +25,16 @@ export class AddingDepartmentComponent implements OnInit {
   createDepartment(): void {
     console.log(this.department);
     this.departmentService.createDepartment(this.department)
-      .subscribe( data =>
-        console.log(data),
-        error => console.log("Error", error),
-      () => {
-        console.log("Created successfully");
-        this.createDepartmentForm.resetForm();
-      }
+      .subscribe(data =>
+          console.log(data),
 
-  )}
+        error => console.log(error, 'Failed to fetch departments'),
+
+        () => {
+          console.log('Created successfully');
+          this.createDepartmentForm.resetForm();
+        }
+      );
+  }
 
 }

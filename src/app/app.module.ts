@@ -1,26 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-import { AddingEmployeeComponent } from './employee/adding-employee/adding-employee.component';
-import { ListingEmployeeComponent } from './employee/listing-employee/listing-employee.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {EmployeeService} from './employee/adding-employee/employee.service';
 import {AppRoutingModule} from './app.routing.module';
-import {ListingDepartmentComponent} from './department/listing-department/listing-department.component';
 import {DepartmentService} from './department/adding-department/department.service';
-import {AddingDepartmentComponent} from './department/adding-department/adding-department.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {EmployeeModule} from './employee/employee-module/employee.module';
+import {DepartmentModule} from './department/department-module/department.module';
+import {ErrorMessageModule} from './shared/error-message/error-message-module/error-message.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddingEmployeeComponent,
-    AddingDepartmentComponent,
-    ListingEmployeeComponent,
-    ListingDepartmentComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +22,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    EmployeeModule,
+    DepartmentModule,
+    ErrorMessageModule,
     NgbModule.forRoot()
   ],
-  providers: [EmployeeService, DepartmentService],
+  providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
