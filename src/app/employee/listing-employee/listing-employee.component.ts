@@ -2,33 +2,43 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from '../adding-employee/employee.service';
+import {BaseModel} from "../../shared/models/base-model";
 
 @Component({
   selector: 'app-adding-employee',
   templateUrl: './listing-employee.component.html',
   styleUrls: ['./listing-employee.component.css']
 })
-export class ListingEmployeeComponent implements OnInit {
+export class ListingEmployeeComponent extends BaseModel implements OnInit {
+
 
   employees: Employee[];
-  errorMessage: string;
-  errorModel: any;
-  systemErrorText: 'Services are down';
-  displayErrorMessage: boolean;
+  filteredEmployees: Employee[];
+  private _searchTerm: string;
+
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+
+  set searchTerm(value: string) {
+    this._searchTerm = value;
+    this.filteredEmployees = this.filterEmployees(value);
+  }
+
 
   constructor(private router: Router, private employeeService: EmployeeService) {
-
+    super();
   }
 
   ngOnInit() {
     this.employeeService.getEmployees()
       .subscribe(data => {
           this.employees = data;
+          this.filteredEmployees = data;
           console.log(this.employees);
         },
         error => {
-
-          this.handleError(error, 'Failed fetched Employees');
+        this.handleError(error, 'Failed fetched Employees')
         },
 
         () => {
@@ -51,15 +61,7 @@ export class ListingEmployeeComponent implements OnInit {
     this.router.navigate(['/employee', employee.id]);
   }
 
-  private handleError(error: any, logMessage: string) {
-    console.log(error);
-    if (error && error.errorMessage) {
-      this.errorMessage = error.errorMessage;
-      this.errorModel = error;
-    } else {
-      this.errorMessage = this.systemErrorText;
-    }
-    this.displayErrorMessage = true;
-    console.log(logMessage);
+  private filterEmployees(value: string) {
+    return this.employees.filter(employee => employee.name.toLowerCase().indexOf(value.toLowerCase()) !== -1)
   }
 }

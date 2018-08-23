@@ -1,6 +1,9 @@
 <div id="employeesList" *ngIf="employees" class="table-responsive">
 <div class="col-lg-12">
   <h2>Employee Details</h2>
+  <div class="form-group">
+    <input class="form-control" type="text" placeholder="Filter by name" style="width: 300px" [(ngModel)]="searchTerm" />
+  </div>
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -14,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr *ngFor="let employee of filteredEmployees">
       <td>{{employee.id}}</td>
       <td>{{employee.name}}</td>
       <td>{{employee.lName}}</td>

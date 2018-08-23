@@ -28,7 +28,7 @@ export class AddingDepartmentComponent implements OnInit {
       .subscribe(data =>
           console.log(data),
 
-        error => console.log(error, 'Failed to fetch departments'),
+        error => console.log(error, 'Cannot create department'),
 
         () => {
           console.log('Created successfully');
