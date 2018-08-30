@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UrlEnum} from '../../shared/enums/url.enum';
-import { map} from "rxjs/operators";
+import { map} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -39,11 +39,5 @@ export class EmployeeService {
 
   public getEmployee(id: number): Observable<any> {
     return this.http.get(`${this.employeeUrl}/oneemployee/${id}`, httpOptions);
-  }
-//not used
-  private handleError(error: Response | any) {
-    console.error(error.message || error);
-    return Observable.throw(error.status);
-
   }
 }

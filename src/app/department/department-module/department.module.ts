@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EmployeeModule} from '../../employee/employee-module/employee.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ErrorMessageModule} from "../../shared/error-message/error-message-module/error-message.module";
+import {ErrorMessageModule} from '../../shared/error-message/error-message-module/error-message.module';
 
 @NgModule({
   imports: [

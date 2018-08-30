@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DepartmentService} from '../adding-department/department.service';
 import {Department} from '../model/department';
-import {BaseModel} from "../../shared/models/base-model";
+import {BaseModel} from '../../shared/models/base-model';
 
 @Component({
   selector: 'app-adding-department',
@@ -25,7 +25,7 @@ export class ListingDepartmentComponent extends BaseModel implements OnInit {
       },
 
         error => {
-          this.handleError(error, 'Failed fetched Departments')
+          this.handleError(error, 'Failed fetched Departments');
         },
 
         () => {

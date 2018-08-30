@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from '../adding-employee/employee.service';
-import {BaseModel} from "../../shared/models/base-model";
+import {BaseModel} from '../../shared/models/base-model';
 
 @Component({
   selector: 'app-adding-employee',
@@ -38,7 +38,7 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
           console.log(this.employees);
         },
         error => {
-        this.handleError(error, 'Failed fetched Employees')
+        this.handleError(error, 'Failed fetched Employees');
         },
 
         () => {
@@ -51,6 +51,7 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
     this.employeeService.deleteEmployee(employee)
       .subscribe(data => {
           this.employees = this.employees.filter(e => e !== employee);
+          this.filteredEmployees = this.filteredEmployees.filter(e => e !== employee);
         },
         error => console.log('Error: ', error),
 
@@ -62,6 +63,6 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
   }
 
   private filterEmployees(value: string) {
-    return this.employees.filter(employee => employee.name.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+    return this.employees.filter(employee => employee.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 }
