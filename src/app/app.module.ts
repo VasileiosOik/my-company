@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app.routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -11,6 +10,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DepartmentService} from './department/adding-department/department.service';
 import {EmployeeService} from './employee/adding-employee/employee.service';
+import {EventModule} from "./event/event-module/event.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import {EmployeeService} from './employee/adding-employee/employee.service';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -26,6 +27,7 @@ import {EmployeeService} from './employee/adding-employee/employee.service';
     EmployeeModule,
     DepartmentModule,
     ErrorMessageModule,
+    EventModule,
     FlexLayoutModule,
     NgbModule.forRoot()
   ],
