@@ -5,6 +5,7 @@ import {EventSearchValues} from "./model/event-search-values";
 import {DatePipe} from "@angular/common";
 import {EventService} from "./event.service";
 import {UrlEnum} from "../shared/enums/url.enum";
+import {BaseModel} from "../shared/models/base-model";
 
 
 @Component({
@@ -12,13 +13,15 @@ import {UrlEnum} from "../shared/enums/url.enum";
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit {
+export class EventComponent extends BaseModel implements OnInit {
 
   myForm: FormGroup;
   eventReport: Array<EventReport>;
   eventSearchValues: EventSearchValues = new EventSearchValues();
 
-  constructor(private pipe: DatePipe, private eventService: EventService) { }
+  constructor(private pipe: DatePipe, private eventService: EventService) {
+    super();
+  }
 
   ngOnInit() {
     this.myForm = new FormGroup({});
@@ -40,7 +43,7 @@ export class EventComponent implements OnInit {
         console.log(data);
         this.eventReport = data;
       },
-      error => console.log('Error', error),
+      error => {this.handleError(error, 'Failed fetched Events')},
       () => {
           console.log('Finished fetching events');
         }
