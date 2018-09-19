@@ -4,7 +4,8 @@
 
     <div class="form-group">
       <label for="Name">Name:</label>
-      <input [(ngModel)]="department.depName" placeholder="Name" name="Name" class="form-control" id="Name" #Name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Name.invalid}" required>
+      <input [(ngModel)]="department.depName" placeholder="Name" name="Name" class="form-control" id="Name"
+             #Name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Name.invalid}" required>
       <div *ngIf="f.submitted && Name.invalid" class="invalid-feedback">
         <div *ngIf="Name?.errors.required">Name is required</div>
       </div>

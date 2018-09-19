@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {AddingDepartmentComponent} from '../adding-department/adding-department.component';
 import {ListingDepartmentComponent} from '../listing-department/listing-department.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -22,7 +22,8 @@ import {ErrorMessageModule} from '../../shared/error-message/error-message-modul
     ErrorMessageModule,
     NgbModule.forRoot()
   ],
-  declarations: [ AddingDepartmentComponent,
+  declarations: [AddingDepartmentComponent,
     ListingDepartmentComponent]
 })
-export class DepartmentModule { }
+export class DepartmentModule {
+}

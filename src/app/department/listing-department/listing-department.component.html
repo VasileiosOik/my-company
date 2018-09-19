@@ -1,22 +1,24 @@
 <div id="employeesList" *ngIf="departments" class="table-responsive">
-<div class="col-md-12">
-  <h2>Department Details</h2>
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <th class="hidden">Id</th>
-      <th>Department Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let department of departments">
-      <td>{{department.depId}}</td>
-      <td>{{department.depName}}</td>
-      <td><button class="btn btn-danger" (click)="deleteDepartment(department)"> Delete Department</button></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="col-md-12">
+    <h2>Department Details</h2>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Department Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let department of departments">
+        <td>{{department.depId}}</td>
+        <td>{{department.depName}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteDepartment(department)"> Delete Department</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <app-error-message *ngIf="errorMessage" [errorModel]="errorModel" [message]="errorMessage"></app-error-message>
 

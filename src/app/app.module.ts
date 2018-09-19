@@ -10,8 +10,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {DepartmentService} from './department/adding-department/department.service';
 import {EmployeeService} from './employee/adding-employee/employee.service';
-import {EventModule} from "./event/event-module/event.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {EventModule} from './event/event-module/event.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -34,4 +34,5 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

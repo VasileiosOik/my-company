@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {DepartmentService} from '../adding-department/department.service';
 import {Department} from '../model/department';
@@ -19,10 +19,10 @@ export class ListingDepartmentComponent extends BaseModel implements OnInit {
 
   ngOnInit() {
     this.departmentService.getDepartments()
-      .subscribe( data => {
-        this.departments = data;
-        console.log(this.departments);
-      },
+      .subscribe(data => {
+          this.departments = data;
+          console.log(this.departments);
+        },
 
         error => {
           this.handleError(error, 'Failed fetched Departments');
@@ -36,7 +36,7 @@ export class ListingDepartmentComponent extends BaseModel implements OnInit {
 
   deleteDepartment(department: Department): void {
     this.departmentService.deleteDepartment(department)
-      .subscribe( data => {
+      .subscribe(data => {
         this.departments = this.departments.filter(dep => dep !== department);
       });
   }

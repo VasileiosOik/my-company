@@ -9,5 +9,4 @@ export class Employee {
   departmentId: number;
 
 
-
 }

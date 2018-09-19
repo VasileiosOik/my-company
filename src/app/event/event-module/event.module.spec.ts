@@ -1,4 +1,4 @@
-import { EventModule } from './event.module';
+import {EventModule} from './event.module';
 
 describe('EventModule', () => {
   let eventModule: EventModule;

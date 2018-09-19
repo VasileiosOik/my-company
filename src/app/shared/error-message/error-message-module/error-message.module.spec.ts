@@ -1,4 +1,4 @@
-import { ErrorMessageModule } from './error-message.module';
+import {ErrorMessageModule} from './error-message.module';
 
 describe('ErrorMessageModule', () => {
   let errorMessageModule: ErrorMessageModule;

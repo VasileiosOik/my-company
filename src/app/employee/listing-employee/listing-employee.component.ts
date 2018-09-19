@@ -14,6 +14,11 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
 
   employees: Employee[];
   filteredEmployees: Employee[];
+
+  constructor(private router: Router, private employeeService: EmployeeService) {
+    super();
+  }
+
   private _searchTerm: string;
 
   get searchTerm(): string {
@@ -25,11 +30,6 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
     this.filteredEmployees = this.filterEmployees(value);
   }
 
-
-  constructor(private router: Router, private employeeService: EmployeeService) {
-    super();
-  }
-
   ngOnInit() {
     this.employeeService.getEmployees()
       .subscribe(data => {
@@ -38,7 +38,7 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
           console.log(this.employees);
         },
         error => {
-        this.handleError(error, 'Failed fetched Employees');
+          this.handleError(error, 'Failed fetched Employees');
         },
 
         () => {

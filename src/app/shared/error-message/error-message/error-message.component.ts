@@ -14,7 +14,8 @@ export class ErrorMessageComponent implements OnInit {
   @Input('errorModel') errorModel: ErrorModel;
 
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) {
+  }
 
   ngOnInit() {
   }
