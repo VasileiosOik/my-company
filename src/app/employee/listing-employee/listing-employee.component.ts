@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from '../adding-employee/employee.service';
 import {BaseModel} from '../../shared/models/base-model';
+import {OrderPipe} from "ngx-order-pipe";
 
 @Component({
   selector: 'app-adding-employee',
@@ -14,20 +15,13 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
 
   employees: Employee[];
   filteredEmployees: Employee[];
+  employeeFilter: any = {id: ''};
+  order: string = 'id';
+  reverse: boolean = false;
 
-  constructor(private router: Router, private employeeService: EmployeeService) {
+  constructor(private router: Router, private employeeService: EmployeeService, private orderPipe: OrderPipe) {
     super();
-  }
-
-  private _searchTerm: string;
-
-  get searchTerm(): string {
-    return this._searchTerm;
-  }
-
-  set searchTerm(value: string) {
-    this._searchTerm = value;
-    this.filteredEmployees = this.filterEmployees(value);
+    this.orderPipe.transform(this.filteredEmployees, this.order);
   }
 
   ngOnInit() {
@@ -50,6 +44,7 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
   deleteEmployee(employee: Employee): void {
     this.employeeService.deleteEmployee(employee)
       .subscribe(data => {
+          console.log(data);
           this.employees = this.employees.filter(e => e !== employee);
           this.filteredEmployees = this.filteredEmployees.filter(e => e !== employee);
         },
@@ -62,7 +57,12 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
     this.router.navigate(['/employee', employee.id]);
   }
 
-  private filterEmployees(value: string) {
-    return this.employees.filter(employee => employee.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+  setOrder(value: string) {
+    console.log(value);
+    if (this.order === value) {
+      this.reverse = !this.reverse;
+    }
+
+    this.order = value;
   }
 }

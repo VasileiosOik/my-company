@@ -12,6 +12,7 @@ import {BaseModel} from '../../shared/models/base-model';
 export class ListingDepartmentComponent extends BaseModel implements OnInit {
 
   departments: Department[];
+  departmentFilter: any = {depId: ''};
 
   constructor(private router: Router, private departmentService: DepartmentService) {
     super();
@@ -23,11 +24,9 @@ export class ListingDepartmentComponent extends BaseModel implements OnInit {
           this.departments = data;
           console.log(this.departments);
         },
-
         error => {
           this.handleError(error, 'Failed fetched Departments');
         },
-
         () => {
           console.log('Departments fetched successfully');
         }

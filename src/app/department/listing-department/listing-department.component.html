@@ -1,15 +1,23 @@
 <div id="employeesList" *ngIf="departments" class="table-responsive">
   <div class="col-md-12">
     <h2>Department Details</h2>
-    <table class="table table-bordered">
+    <table class="table table-sm table-hover table-striped">
       <thead>
       <tr>
         <th class="hidden">Id</th>
         <th>Department Name</th>
       </tr>
+      <tr>
+        <th>
+          <input type="text" [(ngModel)]="departmentFilter.depId" placeholder="Id">
+        </th>
+        <th>
+          <input type="text" [(ngModel)]="departmentFilter.depName" placeholder="Name">
+        </th>
+      </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let department of departments">
+      <tr *ngFor="let department of departments | filterBy: departmentFilter">
         <td>{{department.depId}}</td>
         <td>{{department.depName}}</td>
         <td>
