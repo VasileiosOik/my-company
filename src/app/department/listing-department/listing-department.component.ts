@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {DepartmentService} from '../adding-department/department.service';
 import {Department} from '../model/department';
 import {BaseModel} from '../../shared/models/base-model';
-import {OrderPipe} from "ngx-order-pipe";
+import {OrderPipe} from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-adding-department',

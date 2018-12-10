@@ -10,7 +10,7 @@ import {EmployeeModule} from '../../employee/employee-module/employee.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageModule} from '../../shared/error-message/error-message-module/error-message.module';
 import {FilterPipeModule} from 'ngx-filter-pipe';
-import {OrderModule} from "ngx-order-pipe";
+import {OrderModule} from 'ngx-order-pipe';
 
 @NgModule({
   imports: [
