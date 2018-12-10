@@ -7,7 +7,7 @@ import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-department',
   templateUrl: './adding-department.component.html',
-  styleUrls: ['./adding-department.component.css']
+  styleUrls: ['./adding-department.component.scss']
 })
 export class AddingDepartmentComponent implements OnInit {
   @ViewChild('f') public createDepartmentForm: NgForm;

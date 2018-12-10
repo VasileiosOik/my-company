@@ -6,8 +6,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageModule} from '../../shared/error-message/error-message-module/error-message.module';
-import {FilterPipeModule} from "ngx-filter-pipe";
-import {OrderModule} from "ngx-order-pipe";
+import {FilterPipeModule} from 'ngx-filter-pipe';
+import {OrderModule} from 'ngx-order-pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import {OrderModule} from "ngx-order-pipe";
     ErrorMessageModule,
     FilterPipeModule,
     OrderModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   declarations: [AddingEmployeeComponent, ListingEmployeeComponent]
 })

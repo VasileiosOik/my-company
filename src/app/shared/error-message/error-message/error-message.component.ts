@@ -9,9 +9,9 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ErrorMessageComponent implements OnInit {
 
-  @Input('message') message: string;
+  @Input() message: string;
 
-  @Input('errorModel') errorModel: ErrorModel;
+  @Input() errorModel: ErrorModel;
 
 
   constructor(private modalService: NgbModal) {

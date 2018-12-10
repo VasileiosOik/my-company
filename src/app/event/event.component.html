@@ -17,12 +17,12 @@
       <mat-datepicker #pickerTo></mat-datepicker>
     </mat-form-field>
   </div>
+
   <div class="row">
   <span class="pull-right">
     <button type="submit" id="searchButton" class="btn-primary">Search</button>
   </span>
   </div>
 </form>
-<br>
 <br>
 <app-event-results *ngIf="eventReport" [eventReport]="eventReport"></app-event-results>

@@ -29,7 +29,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ErrorMessageModule,
     EventModule,
     FlexLayoutModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent]

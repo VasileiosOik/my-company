@@ -9,7 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EmployeeModule} from '../../employee/employee-module/employee.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageModule} from '../../shared/error-message/error-message-module/error-message.module';
-import {FilterPipeModule} from "ngx-filter-pipe";
+import {FilterPipeModule} from 'ngx-filter-pipe';
+import {OrderModule} from "ngx-order-pipe";
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {FilterPipeModule} from "ngx-filter-pipe";
     EmployeeModule,
     ErrorMessageModule,
     FilterPipeModule,
-    NgbModule.forRoot()
+    OrderModule,
+    NgbModule
   ],
   declarations: [AddingDepartmentComponent,
     ListingDepartmentComponent]

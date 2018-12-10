@@ -22,7 +22,7 @@ import {EventResultsComponent} from '../event-results/event-results.component';
     FormsModule,
     ReactiveFormsModule,
     ErrorMessageModule,
-    NgbModule.forRoot(),
+    NgbModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatNativeDateModule,

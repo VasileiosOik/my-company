@@ -11,7 +11,7 @@ import {ErrorMessageComponent} from '../error-message/error-message.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule
   ],
   declarations: [ErrorMessageComponent],
   exports: [ErrorMessageComponent]

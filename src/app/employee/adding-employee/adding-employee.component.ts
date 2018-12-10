@@ -8,7 +8,7 @@ import {NgForm} from '@angular/forms';
 @Component({
   selector: 'app-employee',
   templateUrl: './adding-employee.component.html',
-  styleUrls: ['./adding-employee.component.css']
+  styleUrls: ['./adding-employee.component.scss']
 })
 export class AddingEmployeeComponent implements OnInit {
 

@@ -5,11 +5,11 @@ import {BaseModel} from '../../shared/models/base-model';
 @Component({
   selector: 'app-event-results',
   templateUrl: './event-results.component.html',
-  styleUrls: ['./event-results.component.css']
+  styleUrls: ['./event-results.component.scss']
 })
 export class EventResultsComponent extends BaseModel implements OnInit {
 
-  @Input('eventReport') eventReport: Array<EventReport>;
+  @Input() eventReport: Array<EventReport>;
 
   constructor() {
     super();

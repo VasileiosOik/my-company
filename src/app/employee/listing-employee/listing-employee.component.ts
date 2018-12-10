@@ -3,12 +3,12 @@ import {Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from '../adding-employee/employee.service';
 import {BaseModel} from '../../shared/models/base-model';
-import {OrderPipe} from "ngx-order-pipe";
+import {OrderPipe} from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-adding-employee',
   templateUrl: './listing-employee.component.html',
-  styleUrls: ['./listing-employee.component.css']
+  styleUrls: ['./listing-employee.component.scss']
 })
 export class ListingEmployeeComponent extends BaseModel implements OnInit {
 
@@ -16,8 +16,8 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
   employees: Employee[];
   filteredEmployees: Employee[];
   employeeFilter: any = {id: ''};
-  order: string = 'id';
-  reverse: boolean = false;
+  order = 'id';
+  reverse = false;
 
   constructor(private router: Router, private employeeService: EmployeeService, private orderPipe: OrderPipe) {
     super();

@@ -4,8 +4,19 @@
     <table class="table table-sm table-hover table-striped">
       <thead>
       <tr>
-        <th class="hidden">Id</th>
-        <th>Department Name</th>
+        <th [class.active]="order === 'depId'"
+            (click)="setOrder('depId')">
+          ID
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'depName'"
+            (click)="setOrder('depName')"
+            class="mdl-data-table__cell--non-numeric">
+          Department Name
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </th>
       </tr>
       <tr>
         <th>
@@ -17,7 +28,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let department of departments | filterBy: departmentFilter">
+      <tr *ngFor="let department of departments | filterBy: departmentFilter
+                                                | orderBy: order: reverse: 'case-insensitive'">
         <td>{{department.depId}}</td>
         <td>{{department.depName}}</td>
         <td>
