@@ -1,18 +1,22 @@
 <form [formGroup]="myForm" (ngSubmit)="loadReport()" novalidate>
+
   <div class="form-group col-lg-2">
-    <label for="fromDate" id="fromDate" class="form-control-label">From Date:</label>
+    <label for="fromDate" class="form-control-label">From Date:</label>
     <mat-form-field>
-      <input title="fromDate" matInput [matDatepicker]="pickerFrom" [ngModelOptions]="{standalone: true}"
-             [(ngModel)]="eventSearchValues.fromDate">
+      <input id="fromDate" name="fromDate" title="fromDate" matInput [matDatepicker]="pickerFrom"
+             [ngModelOptions]="{standalone: true}"
+             [(ngModel)]="eventSearchValues.fromDate"/>
       <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
       <mat-datepicker #pickerFrom></mat-datepicker>
     </mat-form-field>
   </div>
+  <br>
   <div class="form-group col-lg-2">
-    <label for="toDate" id="toDate" class="form-control-label">To Date:</label>
+    <label for="toDate" class="form-control-label">To Date:</label>
     <mat-form-field>
-      <input title="toDate" matInput [matDatepicker]="pickerTo" [ngModelOptions]="{standalone: true}"
-             [(ngModel)]="eventSearchValues.toDate">
+      <input name="toDate" id="toDate" title="toDate" matInput [matDatepicker]="pickerTo"
+             [ngModelOptions]="{standalone: true}"
+             [(ngModel)]="eventSearchValues.toDate"/>
       <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
       <mat-datepicker #pickerTo></mat-datepicker>
     </mat-form-field>
