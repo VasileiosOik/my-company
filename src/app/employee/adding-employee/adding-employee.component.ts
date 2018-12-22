@@ -17,7 +17,8 @@ export class AddingEmployeeComponent implements OnInit {
   addingForm: FormGroup;
   submitted = false;
 
-  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private employeeService: EmployeeService,
+              private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
 
@@ -36,7 +37,7 @@ export class AddingEmployeeComponent implements OnInit {
       hireDate: new FormControl('', Validators.required),
       managerId: new FormControl('', Validators.required),
       departmentId: new FormControl('', Validators.required)
-    })
+    });
   }
 
   get f() {
