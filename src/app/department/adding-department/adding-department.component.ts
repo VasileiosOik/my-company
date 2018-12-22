@@ -11,7 +11,6 @@ import {NgForm} from '@angular/forms';
 })
 export class AddingDepartmentComponent implements OnInit {
   @ViewChild('f') public createDepartmentForm: NgForm;
-
   department: Department = new Department();
 
   constructor(private router: Router, private departmentService: DepartmentService) {

@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../model/employee';
 import {EmployeeService} from './employee.service';
 import {Datepicker} from '../model/datepicker';
-import {NgForm} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-employee',
@@ -12,11 +12,12 @@ import {NgForm} from '@angular/forms';
 })
 export class AddingEmployeeComponent implements OnInit {
 
-  @ViewChild('f') public createEmployeeForm: NgForm;
   employee: Employee = new Employee();
   datePicker: Datepicker = new Datepicker();
+  addingForm: FormGroup;
+  submitted = false;
 
-  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) {
+  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
 
@@ -27,17 +28,37 @@ export class AddingEmployeeComponent implements OnInit {
       this.getEmployee(id);
     });
     this.defaultDate();
+
+    this.addingForm = this.formBuilder.group({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      jobTitle: new FormControl('', Validators.required),
+      hireDate: new FormControl('', Validators.required),
+      managerId: new FormControl('', Validators.required),
+      departmentId: new FormControl('', Validators.required)
+    })
+  }
+
+  get f() {
+    return this.addingForm.controls;
   }
 
   saveEmployee(): void {
+    this.employee = Object.assign({}, this.addingForm.value);
     console.log('The employee to save is: ', this.employee);
+    this.submitted = true;
+
+    if (this.addingForm.invalid) {
+      return;
+    }
+
     this.employee.hireDate = this.convertDateToStringValue(this.datePicker.date);
     this.employeeService.saveEmployee(this.employee)
       .subscribe(data => console.log(data),
         error => console.log('Error', error),
         () => {
           console.log('Created successfully');
-          this.createEmployeeForm.resetForm();
+          this.addingForm.reset();
         }
       );
   }
