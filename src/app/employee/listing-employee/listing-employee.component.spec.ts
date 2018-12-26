@@ -47,5 +47,5 @@ describe('ListingEmployeeComponent', () => {
     expect(element[4].innerText).toContain('2018-05-19');
     expect(element[5].innerText).toContain(100001);
     expect(element[6].innerText).toContain(1002);
-  }))
+  }));
 });
