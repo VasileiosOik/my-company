@@ -28,7 +28,7 @@ export class EmployeeService {
   }
 
   public saveEmployee(employee): Observable<any> {
-    if (employee.id === null) {
+    if (employee.id === null || employee.id === undefined) {
       console.log('Create a new Employee');
       return this.http.post(`${this.employeeUrl}/employee`, employee, httpOptions);
     } else {
