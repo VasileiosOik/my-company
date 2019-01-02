@@ -8,8 +8,8 @@
           <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" formControlName="name" placeholder="First Name" class="form-control"
-                   id="firstName" [ngClass]="{ 'is-invalid': submitted && addingForm.controls['name'].errors}" required>
-            <div *ngIf="submitted && addingForm.controls['name'].errors" class="invalid-feedback">
+                   id="firstName" [ngClass]="{ 'is-invalid': addingForm.controls['name'].touched && addingForm.controls['name'].errors}" required>
+            <div *ngIf="addingForm.controls['name'].touched && addingForm.controls['name'].errors" class="invalid-feedback">
               <div *ngIf="addingForm.controls['name'].errors.required">First Name is required</div>
             </div>
           </div>
@@ -17,8 +17,8 @@
           <div class="form-group">
             <label for="lastName">Last Name:</label>
             <input type="text" formControlName="lName" placeholder="Last name" class="form-control"
-                   id="lastName" [ngClass]="{ 'is-invalid': submitted && addingForm.controls['lName'].errors }" required>
-            <div *ngIf="submitted && addingForm.controls['lName'].errors" class="invalid-feedback">
+                   id="lastName" [ngClass]="{ 'is-invalid': addingForm.controls['lName'].touched && addingForm.controls['lName'].errors }" required>
+            <div *ngIf="addingForm.controls['lName'].touched && addingForm.controls['lName'].errors" class="invalid-feedback">
               <div *ngIf="addingForm.controls['lName'].errors.required">Last Name is required</div>
             </div>
           </div>
@@ -26,8 +26,8 @@
           <div class="form-group">
             <label for="jobTitle">Job Title:</label>
             <input type="text" placeholder="Job Title" formControlName="jobTitle" class="form-control"
-                   id="jobTitle" [ngClass]="{ 'is-invalid': submitted && addingForm.controls['jobTitle'].errors }" required>
-            <div *ngIf="submitted && addingForm.controls['jobTitle'].errors" class="invalid-feedback">
+                   id="jobTitle" [ngClass]="{ 'is-invalid': addingForm.controls['jobTitle'].touched && addingForm.controls['jobTitle'].errors }" required>
+            <div *ngIf="addingForm.controls['jobTitle'].touched && addingForm.controls['jobTitle'].errors" class="invalid-feedback">
               <div *ngIf="addingForm.controls['jobTitle'].errors.required">Job Title is required</div>
             </div>
           </div>
@@ -36,11 +36,14 @@
             <label for="hireDate">Hire Date:</label>
             <div class="input-group">
               <input class="form-control" formControlName="hireDate" id="hireDate" placeholder="yyyy-mm-dd"
-                     ngbDatepicker #d="ngbDatepicker" required>
+                     ngbDatepicker #d="ngbDatepicker" [ngClass]="{ 'is-invalid': addingForm.controls['hireDate'].touched && addingForm.controls['hireDate'].errors }" required>
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                   <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" alt=""/>
                 </button>
+              </div>
+              <div *ngIf="addingForm.controls['hireDate'].touched && addingForm.controls['hireDate'].errors" class="invalid-feedback">
+                <div *ngIf="addingForm.controls['hireDate'].errors.required">Date is required</div>
               </div>
             </div>
           </div>
@@ -48,8 +51,8 @@
           <div class="form-group">
             <label for="managerId">Manager Id:</label>
             <input type="number" placeholder="Manager Id" formControlName="managerId" class="form-control"
-                   id="managerId" [ngClass]="{ 'is-invalid': submitted && addingForm.controls['managerId'].errors }" required>
-            <div *ngIf="submitted && addingForm.controls['managerId'].errors" class="invalid-feedback">
+                   id="managerId" [ngClass]="{ 'is-invalid': addingForm.controls['managerId'].touched && addingForm.controls['managerId'].errors }" required>
+            <div *ngIf="addingForm.controls['managerId'].touched && addingForm.controls['managerId'].errors" class="invalid-feedback">
               <div *ngIf="addingForm.controls['managerId'].errors.required">Manager Id is required</div>
               <div *ngIf="addingForm.controls['managerId'].errors.minLength">Manager Id must be at least 6 characters</div>
             </div>
@@ -58,8 +61,8 @@
           <div class="form-group">
             <label for="departmentId">Department Id:</label>
             <input type="number" placeholder="Department Id" formControlName="departmentId" class="form-control"
-                   id="departmentId" [ngClass]="{ 'is-invalid': submitted && addingForm.controls['departmentId'].errors}" required>
-            <div *ngIf="submitted && addingForm.controls['departmentId'].errors" class="invalid-feedback">
+                   id="departmentId" [ngClass]="{ 'is-invalid': addingForm.controls['departmentId'].touched && addingForm.controls['departmentId'].errors}" required>
+            <div *ngIf="addingForm.controls['departmentId'].touched && addingForm.controls['departmentId'].errors" class="invalid-feedback">
               <div *ngIf="addingForm.controls['departmentId'].errors.required">Department Id is required</div>
               <div *ngIf="addingForm.controls['departmentId'].errors.minLength">Department Id must be at least 4 characters</div>
             </div>
