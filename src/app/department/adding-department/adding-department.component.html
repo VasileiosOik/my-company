@@ -6,17 +6,17 @@
         <form name="form" (ngSubmit)="f.form.valid && createDepartment()" #f="ngForm" novalidate>
 
           <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" [(ngModel)]="department.depName" placeholder="Name" name="name"
-                   class="form-control" id="name" #name="ngModel"
-                   [ngClass]="{ 'is-invalid': f.submitted && name.invalid}" required>
-            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-              <div *ngIf="name.errors.required">Name is required</div>
+            <label for="depName">Name:</label>
+            <input type="text" [(ngModel)]="department.depName" placeholder="Name" name="depName"
+                   class="form-control" id="depName" #depName="ngModel"
+                   [ngClass]="{ 'is-invalid': f.touched && depName.invalid}" required>
+            <div *ngIf="f.touched && depName.invalid" class="invalid-feedback">
+              <div *ngIf="depName.errors.required">Name is required</div>
             </div>
           </div>
 
           <div class="form-group">
-            <button type="submit" class="btn btn-success">Create</button>
+            <button type="submit" class="btn btn-success" [disabled]="!createDepartmentForm.valid">Create</button>
           </div>
         </form>
       </div>

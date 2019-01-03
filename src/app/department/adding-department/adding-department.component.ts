@@ -10,13 +10,12 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./adding-department.component.scss']
 })
 export class AddingDepartmentComponent implements OnInit {
+
   @ViewChild('f') public createDepartmentForm: NgForm;
   department: Department = new Department();
 
   constructor(private router: Router, private departmentService: DepartmentService) {
-
   }
-
 
   ngOnInit() {
   }
@@ -35,5 +34,4 @@ export class AddingDepartmentComponent implements OnInit {
         }
       );
   }
-
 }
