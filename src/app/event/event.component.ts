@@ -6,6 +6,8 @@ import {DatePipe} from '@angular/common';
 import {EventService} from './event.service';
 import {UrlEnum} from '../shared/enums/url.enum';
 import {BaseModel} from '../shared/models/base-model';
+import {Department} from '../department/model/department';
+import {Employee} from '../employee/model/employee';
 
 
 @Component({
@@ -18,6 +20,8 @@ export class EventComponent extends BaseModel implements OnInit {
   myForm: FormGroup;
   eventReport: Array<EventReport>;
   eventSearchValues: EventSearchValues = new EventSearchValues();
+  departmentReport: Array<Department>;
+  employeeReport: Array<Employee>;
 
   constructor(private pipe: DatePipe, private eventService: EventService) {
     super();
@@ -30,6 +34,9 @@ export class EventComponent extends BaseModel implements OnInit {
   }
 
   loadReport() {
+    this.departmentReport = new Array<Department>();
+    this.employeeReport = new Array<Employee>();
+    this.eventReport = new Array<EventReport>();
     this.eventService.getEvents(this.mapEventReport())
       .subscribe(data => {
           console.log(data);
@@ -39,9 +46,20 @@ export class EventComponent extends BaseModel implements OnInit {
           this.handleError(error, 'Failed fetched Events');
         },
         () => {
+          this.eventReport.filter(event => {
+            if (event && event.employeeId) {
+              this.employeeReport.push(this.mapEmployee(event));
+            } else {
+              this.departmentReport.push(this.mapDepartment(event));
+            }
+          });
           console.log('Finished fetching events');
         }
       );
+  }
+
+  private mapEmployee(event: EventReport) {
+    return new Employee(event.employeeId, event.firstName, event.lastName, event.jobTitle, event.hireDate, event.managerId, event.departmentId);
   }
 
   private defaultToDate() {
@@ -67,5 +85,9 @@ export class EventComponent extends BaseModel implements OnInit {
   private mapEventDate(date: any) {
     const s = this.pipe.transform(date, 'yyyy-MM-dd');
     return s.toString();
+  }
+
+  private mapDepartment(event: EventReport) {
+    return new Department(event.departmentId, event.departmentName);
   }
 }

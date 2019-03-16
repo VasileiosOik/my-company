@@ -1,32 +1,50 @@
 <form [formGroup]="myForm" (ngSubmit)="loadReport()" novalidate>
-
-  <div class="form-group col-lg-2">
-    <label for="fromDate" class="form-control-label">From Date:</label>
-    <mat-form-field style="padding-left: 11px">
-      <input  id="fromDate" name="fromDate" title="fromDate" matInput [matDatepicker]="pickerFrom"
-             [ngModelOptions]="{standalone: true}"
-             [(ngModel)]="eventSearchValues.fromDate"/>
-      <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-      <mat-datepicker #pickerFrom></mat-datepicker>
-    </mat-form-field>
-  </div>
-
-  <div class="form-group col-lg-2">
-    <label for="toDate" class="form-control-label">To Date:</label>
-    <mat-form-field style="padding-left: 30px">
-      <input name="toDate" id="toDate" title="toDate" matInput [matDatepicker]="pickerTo"
-             [ngModelOptions]="{standalone: true}"
-             [(ngModel)]="eventSearchValues.toDate"/>
-      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-      <mat-datepicker #pickerTo></mat-datepicker>
-    </mat-form-field>
-  </div>
-
   <div class="row">
-  <span class="pull-right">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="fromDate" class="form-control-label">From Date:</label>
+        <mat-form-field style="padding-left: 11px">
+          <input id="fromDate" name="fromDate" title="fromDate" matInput [matDatepicker]="pickerFrom"
+                 [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="eventSearchValues.fromDate"/>
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="toDate" class="form-control-label">To Date:</label>
+        <mat-form-field style="padding-left: 30px">
+          <input name="toDate" id="toDate" title="toDate" matInput [matDatepicker]="pickerTo"
+                 [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="eventSearchValues.toDate"/>
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <span class="pull-right">
     <button type="submit" id="searchButton" class="btn btn-primary">Search</button>
-  </span>
+    </span>
   </div>
 </form>
 <br>
-<app-event-results *ngIf="eventReport" [eventReport]="eventReport"></app-event-results>
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Employee Events
+    </ng-template>
+    <div *ngIf="employeeReport">
+      <app-event-results-employee [employeeReport]="employeeReport"></app-event-results-employee>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Department Events
+    </ng-template>
+    <div *ngIf="departmentReport">
+      <app-event-results-department [departmentReport]="departmentReport"></app-event-results-department>
+    </div>
+  </mat-tab>
+</mat-tab-group>

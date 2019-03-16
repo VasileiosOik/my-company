@@ -7,5 +7,5 @@ export class EventReport {
   managerId?: number;
   departmentId?: number;
   departmentName?: string;
-  timeCreated: any;
+  timeCreated?: any;
 }

@@ -11,9 +11,10 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatNativeDateModule,
-  MatRippleModule
+  MatRippleModule, MatTableModule, MatTabsModule
 } from '@angular/material';
-import {EventResultsComponent} from '../event-results/event-results.component';
+import {EventResultsDepartmentComponent} from '../event-results-department/event-results-department.component';
+import {EventResultsEmployeeComponent} from '../event-results-employee/event-results-employee.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,9 @@ import {EventResultsComponent} from '../event-results/event-results.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTableModule,
+    MatTabsModule
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +41,7 @@ import {EventResultsComponent} from '../event-results/event-results.component';
     MatRippleModule,
   ],
   providers: [DatePipe],
-  declarations: [EventComponent, EventResultsComponent]
+  declarations: [EventComponent, EventResultsDepartmentComponent,EventResultsEmployeeComponent]
 })
 export class EventModule {
 }
