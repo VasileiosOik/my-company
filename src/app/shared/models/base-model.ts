@@ -8,8 +8,8 @@ export class BaseModel {
   handleError(error: any, logMessage: string): void {
     console.log(error);
     console.log(logMessage);
-    if (error && error.errorMessage) {
-      this.errorMessage = error.message;
+    if (error && error.error ) {
+      this.errorMessage = error.error.String;
       this.errorModel = error.type;
     } else {
       this.errorMessage = 'Services are down';
