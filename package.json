@@ -31,7 +31,7 @@
     "intl": "1.2.5",
     "ngx-filter-pipe": "2.1.2",
     "ngx-order-pipe": "2.0.2",
-    "npm": "6.9.0",
+    "npm": "6.14.6",
     "rxjs": "6.4.0",
     "rxjs-compat": "6.4.0",
     "uuid": "3.3.2",
