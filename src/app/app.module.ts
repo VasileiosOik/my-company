@@ -12,6 +12,8 @@ import {DepartmentService} from './department/adding-department/department.servi
 import {EmployeeService} from './employee/adding-employee/employee.service';
 import {EventModule} from './event/event-module/event.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouteReuseStrategy} from '@angular/router';
+import {CustomReuseStrategy} from './service/CustomReuseStrategy';
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FlexLayoutModule,
     NgbModule
   ],
-  providers: [DepartmentService, EmployeeService],
+  providers: [DepartmentService, EmployeeService,{ provide: RouteReuseStrategy, useClass: CustomReuseStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

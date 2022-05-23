@@ -49,7 +49,7 @@ export class AddingEmployeeComponent implements OnInit {
       return;
     }
 
-    this.employee.hireDate = this.convertDateToString(this.addingForm.controls['hireDate'].value);
+    this.employee.hireDate = AddingEmployeeComponent.convertDateToString(this.addingForm.controls['hireDate'].value);
     this.employeeService.saveEmployee(this.employee)
       .subscribe(data => console.log(data),
         error => console.log('Error', error),
@@ -61,7 +61,7 @@ export class AddingEmployeeComponent implements OnInit {
       );
   }
 
-  private convertDateToString(date: any): string {
+  private static convertDateToString(date: any): string {
     let dateObj: Date;
     dateObj = new Date(date.year, date.month - 1, date.day);
     return dateObj.toISOString().substring(0, dateObj.toISOString().indexOf('T'));
@@ -81,18 +81,18 @@ export class AddingEmployeeComponent implements OnInit {
             this.addingForm.controls['managerId'].setValue(this.employee.managerId);
             this.addingForm.controls['departmentId'].setValue(this.employee.departmentId);
             this.addingForm.controls['hireDate'].setValue(this.employee.hireDate);
-            this.addingForm.controls['hireDate'].patchValue(this.convertStringToDateObject(this.employee.hireDate));
+            this.addingForm.controls['hireDate'].patchValue(AddingEmployeeComponent.convertStringToDateObject(this.employee.hireDate));
           },
           error =>
             console.log('Error', error),
           () => {
-            console.log('Retrieved successfully');
+            console.log('Employee Found Successfully');
           });
 
     }
   }
 
-  private convertStringToDateObject(hireDate: string): NgbDateStruct {
+  private static convertStringToDateObject(hireDate: string): NgbDateStruct {
     const d = new Date(hireDate);
     return {
       'year': d.getFullYear(),

@@ -5,12 +5,14 @@ import {ListingEmployeeComponent} from './employee/listing-employee/listing-empl
 import {ListingDepartmentComponent} from './department/listing-department/listing-department.component';
 import {AddingDepartmentComponent} from './department/adding-department/adding-department.component';
 import {EventComponent} from './event/event.component';
+import {EmployeeDetailComponent} from './employee/employee-detail/employee-detail.component';
 
 
 const routes: Routes = [
-  {path: 'employees', component: ListingEmployeeComponent},
+  {path: 'employees', component: ListingEmployeeComponent, data: { shouldReuseRoute: true, reuseRoutesFrom: ['employee', 'employee/:id', 'detail', 'detail/:id']}},
   {path: 'employee/:id', component: AddingEmployeeComponent},
-  {path: 'departments', component: ListingDepartmentComponent},
+  {path: 'detail/:id', component: EmployeeDetailComponent},
+  {path: 'departments', component: ListingDepartmentComponent, data: { shouldReuseRoute: true, reuseRoutesFrom: ['department']}},
   {path: 'department', component: AddingDepartmentComponent},
   {path: 'event', component: EventComponent}
 ];

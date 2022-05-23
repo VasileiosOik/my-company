@@ -29,14 +29,14 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
       .subscribe(data => {
           this.employees = data;
           this.filteredEmployees = data;
-          console.log(this.employees);
+        //  console.log(this.employees);
         },
         error => {
           this.handleError(error, 'Failed fetched Employees');
         },
 
         () => {
-          console.log('Employees fetched successfully');
+          console.log('****Employees fetched successfully****');
         }
       );
   }
@@ -64,5 +64,9 @@ export class ListingEmployeeComponent extends BaseModel implements OnInit {
     }
 
     this.order = value;
+  }
+
+  viewEmployeeDetails(employee: any) {
+    this.router.navigate(['/detail', employee.id]);
   }
 }

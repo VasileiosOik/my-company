@@ -8,6 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ErrorMessageModule} from '../../shared/error-message/error-message-module/error-message.module';
 import {FilterPipeModule} from 'ngx-filter-pipe';
 import {OrderModule} from 'ngx-order-pipe';
+import {EmployeeDetailComponent} from '../employee-detail/employee-detail.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import {OrderModule} from 'ngx-order-pipe';
     OrderModule,
     NgbModule
   ],
-  declarations: [AddingEmployeeComponent, ListingEmployeeComponent]
+  declarations: [AddingEmployeeComponent, ListingEmployeeComponent, EmployeeDetailComponent]
 })
 export class EmployeeModule {
 }

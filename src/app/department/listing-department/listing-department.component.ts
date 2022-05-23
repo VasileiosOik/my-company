@@ -26,13 +26,13 @@ export class ListingDepartmentComponent extends BaseModel implements OnInit {
     this.departmentService.getDepartments()
       .subscribe(data => {
           this.departments = data;
-          console.log(this.departments);
+       //   console.log(this.departments);
         },
         error => {
           this.handleError(error, 'Failed fetched Departments');
         },
         () => {
-          console.log('Departments fetched successfully');
+          console.log('****Departments fetched successfully****');
         }
       );
   }

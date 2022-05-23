@@ -27,6 +27,7 @@
     "@angular/router": "7.2.9",
     "@ng-bootstrap/ng-bootstrap": "4.1.0",
     "bootstrap": "4.3.1",
+    "caniuse-lite": "^1.0.30001338",
     "core-js": "2.6.5",
     "intl": "1.2.5",
     "ngx-filter-pipe": "2.1.2",
